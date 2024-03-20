@@ -8,101 +8,40 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+import { useState } from 'react';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import { NavDropdown } from 'react-bootstrap';
+
 const Home: React.FC = () => {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const toggleShow = () => setShow((s) => !s);
+
   return (
     <>
-      <Container>
-        <Row>
-          <Col>
-            <div className="uranosTitle"></div>
-            <div className="jetsTitle"></div>
-            <div className="jetBack"></div>
-          </Col>
-        </Row>
-
-        <Row className='mt-5 ms-5'>
-          <Col className='mt-5'>
-            <div>
-              <p className='titleHey'>Hey!, where are you </p>
-              <span className='flyginStyle'>flying</span><span className='titleHey'> to</span><span className='signoStyle'>?</span>
-            </div>
-          </Col>
-        </Row>
-
-        <Row className='mt-5'>
-          <Col className='mt-5'>
-            <Navbar className='styleNavbar' expand="lg">
-              <Container fluid>
-                <Navbar.Collapse id="navbarScroll">
-                  <Nav
-                    className="me-auto my-2 my-lg-0"
-                    style={{ maxHeight: '100px' }}
-                    navbarScroll
-                  >
-                    <Form className="d-flex">
-                      <Form.Control
-                        type="search"
-                        placeholder="Search destinations"
-                        className="me-2 styleInputSearch"
-                        aria-label="Search"
-                      />
-                    </Form>
-          
-                  </Nav>
-                  
-                </Navbar.Collapse>
-                <Nav
-                  className="me-auto my-2 my-lg-0"
-                  style={{ maxHeight: '100px' }}
-                  navbarScroll
-                > 
-                  <a className='me-5 titleButtonsNav' href="/SignIn">From</a>{' '}
-                  <a className='me-5 titleButtonsNav' href="/SignIn">To</a>{' '}
-                  
-        
-                </Nav>
-                
-                <Nav
-                  className="me-auto my-2 my-lg-0"
-                  style={{ maxHeight: '100px' }}
-                  navbarScroll
-                >
-                  <a className='me-3 titleButtonsNav' href="/SignIn">Sign In</a>{' '}
-                  <a className='me-3 titleButtonsNav' href="/SignIn">Sign In</a>{' '}
-                  
-        
-                </Nav>
-
-                <Button className='styleButton'>Search</Button>
-                
-              </Container>
-            </Navbar>
-          </Col>
-        </Row>
-
-        <Stack className="mx-auto">
-          <Row className="justify-content-lg-center">
-            <Col xs md="5" lg="5" xl="5" xxl="10">
-              <div className="jetBackFront"></div>
-            </Col>
-          </Row>
-        </Stack>
-        
-        <Row className='mt-5 ms-5'>
-          <Col className='mt-5'>
-            <div>
-              <span className='flyginStyle'>Popular</span><span className='titleHey'> flights</span>
-            </div>
-          </Col>
-        </Row>
-
-        <Row className="justify-content-lg-center">
-          <Col xs md="5" lg="5" xl="5" xxl="9" className='mt-5'>
-            <div className="mapBack"></div>
-          </Col>
-        </Row>
-        
-      </Container>
+      <Navbar expand={false} className="bg-body-tertiary mb-3">
+        <Container fluid>
+          <Navbar.Brand href="#">Dashboard</Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Offcanvas
+            placement="start"
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title>
+                Offcanvas
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Nav className="justify-content-end flex-grow-1 pe-3">
+                <Nav.Link href="#action1">Perfil</Nav.Link>
+                <Nav.Link href="#action1">Cerrar sesion</Nav.Link>
+              </Nav>
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+        </Container>
+      </Navbar>
     </>
   );
 }

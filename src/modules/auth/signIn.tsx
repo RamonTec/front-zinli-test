@@ -15,6 +15,7 @@ import { UserModel, ErrorMessages } from '../../shared/types';
 import { useNavigate } from 'react-router-dom';
 import { LoaderRequest } from '../../components/loaders';
 import { toast } from 'react-toastify';
+import { SetUserLocalStorage } from '../../shared/utils/session.storage';
 
 type Inputs = {
   username: string,
@@ -41,6 +42,19 @@ const SignIn: React.FC = () => {
       toast.success("Bienvenido", {
         position: "top-right"
       });
+
+      SetUserLocalStorage({
+        data: {
+          id: response?.token.user._id as string,
+          token: response?.token.authToken as string,
+          refreshToken: response?.token.refreshToken as string,
+          username: response.token.user.username,
+          name: response?.token.user.name as string,
+          surname: response?.token.user.surname as string,
+          avatar: '',
+        }
+      });
+      
       navigate('/home');
       return
     }
