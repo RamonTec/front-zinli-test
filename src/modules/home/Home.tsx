@@ -10,7 +10,8 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import { useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { NavDropdown } from 'react-bootstrap';
+import { createPost, getPosts } from '../../shared/rest/post';
+import { PostForm } from '../../components/postForm';
 
 const Home: React.FC = () => {
 
@@ -42,6 +43,10 @@ const Home: React.FC = () => {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
+
+      <PostForm
+        
+      />
     </>
   );
 }

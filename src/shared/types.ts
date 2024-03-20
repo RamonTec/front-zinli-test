@@ -18,14 +18,14 @@ export type UserModel = {
   surname?: string;
 }
 
-export type recoveryPasswordType = {
-  password: string;
-  tfaCode: string;
-  token: string;
-}
-
-export type resetPassword = {
-  email: string;
+export type PostModel = {
+  image?: string,
+  message: string,
+  likes?: string,
+  author: string,
+  create_at: string,
+  location: string,
+  status: 'drafted' | 'deleted' | 'published'
 }
 
 
