@@ -1,0 +1,32 @@
+.buttonLogin {
+  background-color: #3886AB !important;
+  border-radius: 5px !important;
+  border-style: none !important;
+  height: 50px;
+}
+
+.buttonLoginFacebook {
+  background-color: #2D3748 !important;
+  border-radius: 5px !important;
+  border-style: none !important;
+  height: 50px;
+}
+
+.titleLogin {
+  color: #3886AB;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.titleWelcomeBack {
+  color: #3886AB;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.styleRedirect {
+  color: #3886AB;
+  text-decoration: none;
+}
+
+
