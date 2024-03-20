@@ -3,7 +3,7 @@ import { ENDPOINT } from '../constants';
 import { PostModel  } from '../types';
 import { GetUserLocalStorage } from '../utils/session.storage';
 
-export const createPost = async (userData: PostModel) => {
+export const createPost = async (postData: PostModel) => {
   try {
     const user = GetUserLocalStorage();
     const token = user?.data.token;
@@ -11,7 +11,7 @@ export const createPost = async (userData: PostModel) => {
       Authorization: `Bearer ${token}`
     };
     
-    const response = await axios.post(`${ENDPOINT}/post/create-post`, userData, { headers });
+    const response = await axios.post(`${ENDPOINT}/post/create-post`, postData, { headers });
     return response.data;
   } catch (error) {
     console.log('-- error:', error);

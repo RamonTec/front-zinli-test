@@ -23,7 +23,7 @@ export type PostModel = {
   message: string,
   likes?: string,
   author: string,
-  create_at: string,
+  create_at: Date,
   location: string,
   status: 'drafted' | 'deleted' | 'published'
 }
