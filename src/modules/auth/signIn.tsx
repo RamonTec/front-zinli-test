@@ -37,7 +37,6 @@ const SignIn: React.FC = () => {
   const fetchLoginUser = async (body: UserModel) => {
     const response = await loginUser(body);
     setLoading(false);
-    console.log('- response:', response);
     if (response.status === 200) {
       toast.success("Bienvenido", {
         position: "top-right"
@@ -78,7 +77,7 @@ const SignIn: React.FC = () => {
       { loading ?? <LoaderRequest></LoaderRequest> }
       <Row className="justify-content-center">
         <Col xs md="5" lg="5" xl="5" xxl="5">
-          <Card border="light" style={{ width: '570px' }}>
+          <Card border="light" >
             <Card.Body>
               <Card.Text className='ms-5 titleWelcomeBack'>
                 Welcome back

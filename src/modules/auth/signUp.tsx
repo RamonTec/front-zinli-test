@@ -40,7 +40,6 @@ const SignUp: React.FC = () => {
   const fetchCreateUser = async (body: UserModel) => {
     const response = await createUser(body);
     setLoading(false);
-    console.log('- response:', response);
     if (response.status === 200) {
       toast.success("Usuario creado!", {
         position: "top-right"
@@ -70,7 +69,7 @@ const SignUp: React.FC = () => {
       { loading ?? <LoaderRequest></LoaderRequest> }
       <Row className="justify-content-md-center">
         <Col xs lg="5">
-          <Card border='light' style={{ width: '35rem' }}>
+          <Card border='light'>
             <Card.Body>
               <Card.Text className='text-center titleLogin'>
                 Create an account

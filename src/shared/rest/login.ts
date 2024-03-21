@@ -7,7 +7,7 @@ export const createUser = async (userData: UserModel) => {
     const response = await axios.post(`${ENDPOINT}/auth/signup`, userData);
     return response.data;
   } catch (error) {
-    console.log('-- error:', error);
+    
     return error
   }
 };

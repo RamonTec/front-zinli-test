@@ -162,7 +162,6 @@ const HomeAdmin: React.FC = () => {
             likes={postData?.likes?.length}
             author={postData.author}
             action={() => {
-              console.log('--- here');
               setOnePostDetail(postData);
               toggleShow();
             }}

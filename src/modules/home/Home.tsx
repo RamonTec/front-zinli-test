@@ -25,7 +25,6 @@ const Home: React.FC = () => {
   const fetchCreatePost = async (body: PostModel) => {
     const response = await createPost(body);
     setLoading(false);
-    console.log('- response:', response);
     if (response.status === 200) {
       toast.success("Post creado!", {
         position: "top-right"
