@@ -71,3 +71,19 @@ export const deletePost = async (postId:string, status: string) => {
     return error
   }
 };
+
+export const likedPost = async (postId:string, userName: string) => {
+  try {
+    const user = GetUserLocalStorage();
+    const token = user?.data.token;
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+    
+    const response = await axios.post(`${ENDPOINT}/post/like-post`, {postId, userName}, { headers });
+    return response.data;
+  } catch (error) {
+    console.log('-- error:', error);
+    return error
+  }
+};

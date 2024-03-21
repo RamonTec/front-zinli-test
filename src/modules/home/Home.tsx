@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createPost, getPosts } from '../../shared/rest/post';
+import { createPost, getPosts, likedPost } from '../../shared/rest/post';
 import { PostForm } from '../../components/postForm';
 import { ErrorMessages, PostModel } from '../../shared/types';
 import { GetUserLocalStorage } from '../../shared/utils/session.storage';
@@ -61,6 +61,21 @@ const Home: React.FC = () => {
     setPostsData(postFetch.posts);
   }
 
+  const fetchLikePost = async (postId: string, username: string) => {
+    const postFetch = await likedPost(postId as string, username);
+    setLoading(false);
+    if (postFetch.status === 200) {
+      fetchQueryPosts();
+      toast.success("Post liked", {
+        position: "top-right"
+      });
+    } else {
+      toast.success("Error updating post, try again", {
+        position: "top-right"
+      });
+    }
+  }
+
   useEffect(() => {
     fetchQueryPosts();
   }, [currentPage]);
@@ -68,6 +83,14 @@ const Home: React.FC = () => {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
+  const handleLikePhoto = (postId: string) => {
+    const userStore = GetUserLocalStorage();
+    fetchLikePost(
+      postId,
+      userStore?.data.username as string,
+    )
+  }
 
   return (
     <>
@@ -123,6 +146,7 @@ const Home: React.FC = () => {
             likes={postData?.likes?.length}
             author={postData.author}
             image={postData.image}
+            action={() => handleLikePhoto(postData._id as string)}
           />
         ))}
       </div>
