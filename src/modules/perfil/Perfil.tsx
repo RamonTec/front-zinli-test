@@ -11,7 +11,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import MyPagination from '../../components/MyPagination';
 
-const Home: React.FC = () => {
+const Perfil: React.FC = () => {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [postsData, setPostsData] = useState<PostModel[]>([]);
@@ -135,4 +135,4 @@ const Home: React.FC = () => {
   );
 }
 
-export default Home;
+export default Perfil;

@@ -22,7 +22,6 @@ export const PostForm: React.FC<FormPostProps> = ({
   action,
 }) => {
   const [show, setShow] = useState(false);
-  const [loading, setLoading] = useState<boolean>(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,6 +32,7 @@ export const PostForm: React.FC<FormPostProps> = ({
 
   const onSubmit: SubmitHandler<Inputs> = data => {
     action(data.message);
+    handleClose();
   }
 
   return (
@@ -64,7 +64,6 @@ export const PostForm: React.FC<FormPostProps> = ({
               </>
             }
           />
-
 
           </Form>
         </Modal.Body>

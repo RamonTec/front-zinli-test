@@ -19,7 +19,28 @@ export const createPost = async (postData: PostModel) => {
   }
 };
 
-export const getPosts = async () => {
+export const getPosts = async (status: string, startDate: Date, endDate: Date, page: number, pagesize: number) => {
+  try {
+    const user = GetUserLocalStorage();
+    const token = user?.data.token;
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+
+    let url = `${ENDPOINT}/post/get-posts?status=${status}&page=${page}&pageSize=${pagesize}`;
+    if (startDate && endDate) {
+      url += `&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}`;
+    }
+    
+    const response = await axios.get(url, { headers });
+    return response.data;
+  } catch (error) {
+    console.log('-- error:', error);
+    return error
+  }
+};
+
+export const aprovePost = async (postId:string, status: string) => {
   try {
     const user = GetUserLocalStorage();
     const token = user?.data.token;
@@ -27,7 +48,23 @@ export const getPosts = async () => {
       Authorization: `Bearer ${token}`
     };
     
-    const response = await axios.get(`${ENDPOINT}/post/get-posts`, { headers });
+    const response = await axios.put(`${ENDPOINT}/post/aprove-post`, {postId, status}, { headers });
+    return response.data;
+  } catch (error) {
+    console.log('-- error:', error);
+    return error
+  }
+};
+
+export const deletePost = async (postId:string, status: string) => {
+  try {
+    const user = GetUserLocalStorage();
+    const token = user?.data.token;
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+    
+    const response = await axios.put(`${ENDPOINT}/post/delete-post`, {postId, status}, { headers });
     return response.data;
   } catch (error) {
     console.log('-- error:', error);

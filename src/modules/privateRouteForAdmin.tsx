@@ -1,19 +1,19 @@
 import React from 'react';
 import { Outlet, Navigate, useLocation } from 'react-router';
 import { GetUserLocalStorage } from '../shared/utils/session.storage';
-import { LayoutUser } from '../components/layout/layoutUser';
+import { LayoutAdmin } from '../components/layout/layoutAdmin';
 
-const PrivateRoute: React.FC = () => {
+const PrivateRouteForAdmin: React.FC = () => {
   
   const location = useLocation();
   const userStorage = GetUserLocalStorage();
   if (userStorage?.data.token) {
     if (userStorage.data.token) {
       return (
-        <LayoutUser>
-          <Outlet />;
-        </LayoutUser>
-      )
+        <LayoutAdmin>
+          <Outlet />
+        </LayoutAdmin>
+      );
     } else {
       return <Navigate to={'/'} />;
     }
@@ -22,4 +22,4 @@ const PrivateRoute: React.FC = () => {
   }
 };
 
-export default PrivateRoute;
+export default PrivateRouteForAdmin;

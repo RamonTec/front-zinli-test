@@ -8,6 +8,7 @@ export interface UserStorageProps {
     name: string;
     surname: string;
     avatar: string;
+    role: string;
   }
 }
 

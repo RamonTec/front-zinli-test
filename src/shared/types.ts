@@ -19,6 +19,7 @@ export type UserModel = {
 }
 
 export type PostModel = {
+  _id?: string,
   image?: string,
   message: string,
   likes?: string,

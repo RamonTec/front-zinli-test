@@ -52,10 +52,11 @@ const SignIn: React.FC = () => {
           name: response?.token.user.name as string,
           surname: response?.token.user.surname as string,
           avatar: '',
+          role: response?.token.user.role,
         }
       });
-      
-      navigate('/home');
+      if (response.token.user.role === 'admin') navigate('/dashboard')
+      if (response.token.user.role === 'user') navigate('/home');
       return
     }
     if (response.error === ErrorMessages.userNotExist) {
